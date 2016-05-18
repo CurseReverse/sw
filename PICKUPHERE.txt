@@ -1,0 +1,413 @@
+===========================
+PICKUP AT
+
+	-Today, Add gold to account, buy some skins, equip the skins in the character screen, go into game with skins.  Make HideProps checkbox.
+
+	- Make the End screen and You Dead screens, also show all true tips at end of game..
+		
+	- Spectators need to be talking in all gray
+	
+	
+	HIGH LEVEL
+	
+		- Store (ajax / store... ez)
+			Boost formula:
+			min = 50;
+			scaler = 3; (approx max 300)
+			min + (sold / total boosts sold * 100) * 3;
+		
+		- Credit Cards
+		
+		- Friends list
+		
+		
+		- Queue
+		
+		- Lobby (socket? or ajax + interval)
+		
+		- Game
+			- Add roles (recruiter, hypnotist, detective, Cult Leader??)
+			- Style Died / game End popups
+			- Add skins based on settings...
+			- make sure all picks are validated
+			
+			- Evidence Mechanic!  4 Pieces of Evidence from Kenny's death are found at random points during Day 1. 
+			- They are official and true, but wolves / traitor can make modifications to the evidence before it is
+			- automatically submitted at the end of the Day.  It is displayed clearly to everyone... what it says and who it's from.
+			
+		- Rules (In game, In Lobby)
+		
+		- Skins off when sleeping or night time.  
+		
+		- Have option to disable Props, (in case they are confusing people)
+		
+		- Player info box.  Notes / Vote summary
+		
+
+		
+	
+IMAGES: 
+
+images
+
+
+
+
+-------- PLAY ------
+
+LOGO >> 100x100
+
+RULEBOOK SCREENSHOTS >> 400x300
+
+-------SHOP--------
+
+- lives/ boosts / gold
+
+BOOST IMAGE (up arrow or something) >> 80x80
+
+GOLD IMAGE (gold bars) >> 100x100
+
+LIVES IMAGE (Hearts <3 ? ) >> 100x100 // 50x50
+
+RANK IMAGE (wreaths, borders, ) >> 200x150
+
+SKINS varying size.... store image 90x90
+
+ROLE ICONS (for match history) >> 60x60
+
+-------- GAME ----------
+
+BACKGROUND  
+
+ITEMS ON THE FIELD? FENCE? RIVER? BAILS OF HAY?
+
+ELIMINATED >> 130x100
+
+EATEN >> 130x100
+
+YOU GOT EXPLODED (multiple?) 560x150 
+
+YOU GOT EATEN (multiple?) 560x150 
+
+EVIDENCE (Wool, or Wolf hair) Ziploc Bag wth Yellow "Evidence" tape across it.  
+	
+	
+IDEAS:
+
+	- socket.disconnect() to disconnect offenders trying to DDOS etc...
+		- Count amount of requests.. if they reach a certain height in a certain amount of time, disconnect them, don't let them reconnect...
+
+	- Skins = Props?
+	
+	- Buy, or Unlock?
+	
+	- Reads, "Strong read that tyler is a wolf"
+				"Very strong read that tyler is a wolf"
+				
+
+	- eliminator decided 50/50 between total trusted and local trusted
+	- funny image when hovering over players, if eating or eliminating...
+	- other bonuses if trust reaches certain heights? punishments if suspect reaches certain heights?
+	- sound fx during night when things are happening.. either a wolf is eating a sheep, getting blocked, getting blown up by trapper etc...
+	- at start of each day, most trusted total gets a tip, the tips are about the most suspected people...
+	- Lives = <3 symbol , pumpkin symbol (if halloween theme)
+	
+	Tip Ideas:
+		- Player3 is not a regular sheep.
+
+	Most trust, most "READS"!!!!! Most trusted player gets tip every round about highest suspected player(s)...
+	- Can eliminator only target between top 2 suspects?
+	
+	Hypnotist, controls chat AND selections..
+	
+	- Instead of getting eaten, you get kidnapped... You work with other "kidnapped" players to try and save eachother to save Lives.
+	
+	- When you get kidnapped by wolves, you are playing a mini-game with other kidnapped wolves.  You communicate reads back to the team....?
+
+RESET EVERYTHING:
+	- db.users.drop()
+	- db.playerStats.drop()
+	- db.gamestate.drop()
+	- db.gameHistory.drop()
+	
+
+APP WHERE PEOPLE CAN DONATE TO CAUSES?? Allow anyone to post a "Cause", people can look thru and donate?
+Kickstarter but for everything.....
+	- Fundraisers.com...
+	- I was unlucky and should get money because of X / Y
+	- Money needs to go here...
+	
+TIMELINE
+
+- MAY 7 - KNOW ALL IMAGES FOR ARTIST	
+- 	
+	
+	
+--	Same roles on different teams?  Learn the player's role but not team with seer??
+
+		
+===========================
+Since Node.js
+
+- Express
+	- Serve static content, used to connect with mongoDB probably, client request then server responds
+	- JSON EDITOR Online
+
+- Socket.io
+	- client sends shit, server sends shit, they listen for eachother
+
+- Redis
+	- Memory caching service.  Store key / pair values or arrays in RAM for fast access
+	- Store array_id (game_id + ent_id) : (user_id,username,type,x,y,d,m) of every player;
+							("KEY")						("VALUE")
+							(15-5675675) : (18,ian,wolf,0,0,0,0)
+							
+	Array structure:
+
+		(game_id)
+			(ent_id)
+			
+- Using multiple processor cores
+	-http://mobilenext.net/scaling-node-js-multi-core-systems/
+	
+- Nginx/SSL
+	- http://www.sitepoint.com/configuring-nginx-ssl-node-js/
+							
+	-http://stackoverflow.com/questions/6476945/how-do-i-run-redis-on-windows/20200022#20200022		
+
+- Multiple nodes
+	- http://socket.io/docs/using-multiple-nodes/	
+							
+- Cluster / forking processes
+	- https://www.youtube.com/watch?v=6xIbVPyh9wo
+			
+- MongoDB
+
+	- Security - http://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html
+	
+	- To use: (download / install mongoDB, install to folder C: name it "mongo")
+		1. Open cmd, navigate to "C:/mongo/bin" and type "mongod"
+		2. Open another cmd, navigate to "C:/mongo/bin" and type mongo, then to switch database type "use databasename"
+		3. db.users.insert({username: "ian", password: "password", email: "ian@email.com"})
+			3b. db.users.insert([{username: "tyler",password: "password", email: "tyler@email.com"},{username: "TeD", password: "password", email: "TeD@email.com"}])
+		4. db.users.find(), or a nicer look: db.sheepwolf.find().pretty()
+		5. Indexing: https://www.youtube.com/watch?v=mpkmFGuC9NQ
+		6. Examples: http://howtonode.org/node-js-and-mongodb-getting-started-with-mongojs
+		
+		db.users.find() //SELECT * FROM users
+		db.users.find({username:something}) //SELECT * FROM users WHERE username = something
+		
+		//delete an account
+		db.users.remove({username: "ian"});
+		
+		db.users.update({username: "ian"})
+		
+		//add friend//
+		db.users.update({username:"ian"},{$push: {friends: "FRIEND"}})
+		
+		//remove friend//
+		db.users.update({username:"ian"},{$pull: {friends: "FRIEND"}})
+	
+- Heroku (cloud-based server hosting)
+	- Pay as you go, Free trial / experimenting.
+
+- Caching
+	- https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=en
+	
+
+-GOOD ARTICLES:
+
+	- node/html5 game: http://buildnewgames.com/real-time-multiplayer/
+	
+	- Javascript compatibility with mobile devices - http://www.quirksmode.org/m/table.html
+
+
+-- (Waiting) Make character customization screen work. (have plan, need finished sheep / wolf models and finished items)
+
+-- Create queue system and Lobby system, using primary / secondary preferences.
+ 
+-- Groups system.  Search for groups?  Make them public?  Pre-create public groups? Pre-create private groups? Search for Friends by real name?  
+
+-- Tutorial / How to Play, will pop up once per account.  Then if you want to see it again you can navigate to it later..
+
+
+
+
+==========================
+PASSWORDS
+FTP-account: irobertson2 // mf43n0_$eI7V //
+
+
+
+===========================
+MUSIC:
+
+https://www.youtube.com/watch?v=vmqMwqNeSmg
+back to life - croatia squad
+
+
+
+Chill Gaming Playlist - Youtube
+https://www.youtube.com/watch?v=kF9_8iy_Sqg&list=PLSabFMnr4MuJAR_n8Ko7DMqx8W6kqZzJV&index=273
+ 
+
+	
+=========================================================
+
+TO DO LIST:
+
+- In lobby, if host, also add "Invite Group" to go along with "Invite Player" input.
+
+===============================================================
+
+SECURITY:
+	- Spend a week learning how to hack websites, test everything we learn on ourself.
+	- Make sure forms don't accept HTML or SQL statements..
+	- Make all admin / server passwords are tight AF
+	- http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication#477579
+	- http://stackoverflow.com/questions/2794016/what-should-every-programmer-know-about-security
+	-Determine location of user: http://stackoverflow.com/questions/2156231/how-do-you-detect-a-website-visitors-country-specifically-us-or-not
+	
+	- USE SSL CERTIFICATE / HTTPS (COSTS MONEY) to hold credit cards
+	
+	
+	-PASSWORD HASHING - https://www.youtube.com/watch?v=546sFEHUS_k
+	- http://www.johnmorrisonline.com/md5-sha-1-or-bcrypt-for-hashing-and-storing-passwords-in-php/
+	
+	-LOADING TO MEMORY WITH JAVASCRIPT
+	https://www.youtube.com/watch?v=NkpUEQqLatA
+	
+	--ADD AUDIO FILES
+	http://stackoverflow.com/questions/8489710/play-an-audio-file-using-jquery-when-a-button-is-clicked
+	
+	--ACCEPTING CREDIT CARDS
+	http://stackoverflow.com/questions/51094/payment-processors-what-do-i-need-to-know-if-i-want-to-accept-credit-cards-on?rq=1
+	https://www.youtube.com/watch?v=aeE89wn8sgA
+	
+		(from video)
+		
+		-host gator CPANEL
+			- buy dedicated IP (cheap)
+			- Security section -> SSL / TLS Manager
+			- Generate Key, largest key size
+			- Return to SSL Manager
+			- Click on Certificate Signing Requests (fill out form)
+			- Buy the SSL certificate from GoDaddy, $13.00 PER YEAR (Or, namecheap)
+			- Go to my account in GoDaddy, click SSL certificates -> click Set Up
+			- Wait for New Certificate to show up, click launch
+			- Under credits on the left, (might take 5-10 mins to appear)
+			- Click request certificate
+			- Enter certificate signin request below: (take that massive generated string from cpanel
+			- Make sure Pending requests is 1 (means its working)
+			- Might need to check email to confirm something
+			- Download the certificate to my computer, select cPanel in drop down
+			- (Maybe?) Ask HostGator support to install the ticket on our domain name www.sheepwolf.net (can take up to 1 day)
+			- Theres an option (USE SSL) must be set to YES.
+			
+			-Merchant Plus, online credit card processing (promo code: mywifequit)
+			-
+			
+	MemcacheD stuff:
+		- https://www.youtube.com/watch?v=EkDK4U2q5rU
+		- http://www.ubergizmo.com/how-to/install-memcached-windows/
+		- 
+			
+	
+
+	Interval Looop PHP:
+		- http://stackoverflow.com/questions/17667646/execute-a-php-method-every-x-seconds
+		- https://github.com/shaneharter/PHP-Daemon
+	
+
+
+	
+================================================================	
+
+- Make groups system
+
+- Have link on page which opens facebook and "likes" the sheepwolf page.  Bribe by giving $10,000 farm dollars or something.
+
+- Find 11 good unique colors to be used in game
+
+- Make usernames: Host, Wolf, Sheep, Ian, Mayor, Not, Server, Wolves, ETC..
+
+
+=======================================================
+
+GAMES OF THIS GENRE:
+
+- Werewolf
+- Mafia
+- Town of Salem
+- Secret Hitler
+- The Resistance
+
+
+==============================================
+DAY 1 EVENT
+==============================================
+
+- Tips
+
+==============================================================================================
+
+OLD IDEAS
+
+	- Math nerd mode (give lots of unreliable math so can solve game from math) 
+	- Mini games
+	- Poker like
+	- Everyone stays alive, people propose "theories"
+	- People have Hit Points, cannon (or other weapons) do damage.
+	- Trivia / Skill testing questions
+	- Change ratios around, 7wolves 2 sheep, 4v4, etc.
+	- Players get speical objectives
+	- Use your currency in the game
+	- Items, bidding, silent auction, pick up dead players items
+	- Team has shared money to spend... (special role "Banker", controls the money)
+	- 3 cards, trade, they have abilities by themselves or as a combination
+	- cards against humanity feel..
+	- Everybo 100 hp.  Some weapons share the same ammo between eachother.  , you bid on ammo with your hp.
+	- Mode where peoples Trusted votedy gets a random weapon at start,s are not shared, the person who won the vote is not shared, then the person eliminates someone.  Evidence is left behind? Eliminator weapon?	
+
+ROLE COMPOSITION IDEAS (NORMAL MECHANICS)	
+	- Extended (longer games) 
+	- Short (short games)
+	
+	
+	
+MONETIZATION
+---------------------------------------------
+Option B + Lives
+- Earn 50 currency per game on average
+- Lives are restocked back to 3 every day 
+- Can buy lives from the store with 40 currency (0.8 games)
+- Can buy roles from the store for 1,500 currency (30 games)
+- 5 tiers of skins, 300,600,1000,2000,5000 (with trading system)
+---------------------------------------------
+Option B
+- Earn 50 currency per game on average
+- Can buy roles from the store for 1,500 currency (30 games)
+- 5 tiers of skins, 300,600,1000,2000,5000 (with trading system)
+----------------------------------------------
+Lives
+- Lives are restocked back to 3 every day (buy with cash)
+- Roles are free and randomly assigned
+- Boosts available for cash
+- 5 tiers of skins (dropped randomly, with trade-in system, or cash)
+---------------------------------------------
+Premium Account? One-time upgrade, or subscribe
+---------------------------------------------
+- Lives are restocked back to 3 every day
+- 5 tiers of skins (randomly dropped, with trade-in system)
+- Roles are free and randomly assigned
+- Buy lives with hard currency
+- Buy boosts with hard currency
+- Buy skins with hard currency
+- Hard currency is CASH ONLY
+
+
+
+
+	
+	
+

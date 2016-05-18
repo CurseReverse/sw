@@ -1,0 +1,46 @@
+--SHEEP--
+
+Seer (Picks a player in evening, learns true role of that player)
+	- Dumb, clueless, 
+
+Protector (Picks a player in evening, they cant get eaten by wolves that night. Cant pick self.  If successful, loses this ability)
+	- Maternal Instinct, Buff, Strong, Determined
+
+Trapper (Picks a player in evening, if wolves go for them, the player and a random wolf dies.  If successful, loses this ability)
+	- Deceptive, like the wolves, crazy
+
+Coroner (Is told the true role of all dead players, as they die)
+	- Perceptive, ponderous, professional
+
+
+Traitor (Wins if wolves win, appears as sheep in every way.  Knows who wolves are, wolves don't know who traitor is)
+	- Scared, guilty, weak
+
+
+
+
+--WOLVES--
+
+Recruiter (Once per game, may convert a sheep into a traitor instead of eating)
+	- Intimidating, 
+
+
+Wolf Seer (Seer, but for wolves.  Knows when he is seen by sheep seer)
+
+Hypnotist (Picks sheep during evening, controls that player during next day, actions and chat)
+	- Evil, Swirly eyes, intrusive, 
+
+--POTENTIAL--
+
+Intimidator (Team Wolf: picks a player during evening, next day they are muted)
+
+Cult Leader (Team Self: Recruits players to his team, wins when everyone is in the cult, if cult leader is killed everyone in the cult dies, they are granted "cult chat")
+
+Lion (Team Self: Tries to keep game balanced, wins if 1-1-1 at the end)
+
+
+
+
+
+
+

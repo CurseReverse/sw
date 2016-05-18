@@ -1,0 +1,25 @@
+TIP FORMULA...
+
+Tips must be the last thing created, because we need the real odds based on the current gamestate...
+
+var rand = between 1-100
+
+if tip type = 1 "Odds of wolf"
+	var rand2 = (between 0 and 20)
+	var perc = 22 + rand2;
+	
+	if(perc between 0 and rand){
+	
+		//var randPlayer = a wolf
+		//Tip = Theres a rand% chance that randPlayer is a Wolf
+	
+	}else{
+	
+		//var randPlayer = a sheep
+		//Tip = Theres a rand% chance that randPlayer is a Wolf
+	
+	}
+	
+	
+if tip type = 2 "Odds of Sheep"	
+

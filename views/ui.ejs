@@ -1,0 +1,704 @@
+<html>
+
+<head>
+
+	<title>Sheepwolf</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="../public/style/style.css" type ="text/css" /> 	
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />	
+	<link rel="stylesheet" href="../public/scrollbar/jquery.mCustomScrollbar.css" />	
+	
+</head>
+
+<body>
+
+<!-- INVISIBLE DIVS AND MASK -->
+<div id="mask">
+</div>
+
+<div id="popup_small">
+	<div id="popup_small_close">X</div>
+	<div id="popup_small_content">Create lobby and invite USERNAME?</div>
+	<div id="popup_small_confirm">Confirm</div>
+	<div id="popup_small_cancel">Cancel</div>
+</div>
+
+<div id="friend_profile">
+	<div id="friend_profile_close">
+		X
+	</div>
+	<div id="friend_profile_image">
+	</div>
+	<div id="friend_profile_username_wrapper">
+		<div id="friend_profile_username">
+		</div>	
+	</div>
+	<div id="friend_profile_stats">
+		Wins: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X<br>
+		Win % as Sheep: X<br>
+		Win % as Wolf: X<br>
+		Longest win streak: X<br>
+		Suspect accuracy: X%<br>
+		Trust accuracy: X%<br>
+		Eliminate accuracy: X%	
+		
+	</div>	
+	<div id="friend_profile_history">
+		Recent Games: <br>
+		Win  | Sheep | 20 minutes ago | View<br>
+		Win  | Wolf  | 3 hours ago | View<br>
+		Loss | Sheep | 5 days ago | View<br>
+		Loss | Wolf  | 30 days ago | View<br>
+		Win  | Sheep | 30 days ago | View
+		
+	</div>	
+	
+</div>
+
+<div id="my_profile">
+
+	<div id="mp_wrapper">
+	
+		<div class="mph" id="mph_character">Character</div>
+		<div class="mph" id="mph_stats">Stats</div>
+		<div class="mph" id="mph_history">History</div>		
+		<div class="mph" id="mph_inventory">Inventory</div>
+		<div class="mph" id="mph_account">Account</div>
+		
+		<div class="mp" id="mp_character">
+		
+			<div id="sheep_preview">
+			</div>
+			
+			<div id="wolf_preview">
+			</div>
+			
+			<div id="cs_wrapper">
+				<div class="setting_selector" id="head_selector">
+					Head
+				</div>
+				<div class="setting_selector" id="eyes_selector">
+					Eyes
+				</div>
+				<div class="setting_selector" id="face_selector">
+					Face
+				</div>
+				<div class="setting_selector" id="body_selector">
+					Body
+				</div>
+				<div class="setting_selector" id="feet_selector">
+					Feet
+				</div>			
+				
+				<div class="character_settings" id="head_settings"><div class="cs_container" id="Head_container"></div></div>
+				<div class="character_settings" id="eyes_settings"><div class="cs_container" id="Eyes_container"></div></div>
+				<div class="character_settings" id="face_settings"><div class="cs_container" id="Face_container"></div></div>
+				<div class="character_settings" id="body_settings"><div class="cs_container" id="Body_container"></div></div>
+				<div class="character_settings" id="feet_settings"><div class="cs_container" id="Feet_container"></div></div>	
+			</div>
+				
+			<div id="mpc_save">Save</div>
+			<span id="mpc_notify">Saved &#x2713;</span>
+			
+		</div>
+		
+		<div class="mp" id="mp_stats">
+			<div id="stats_rank_img">img</div>
+			<div id="stats_username">username<br>rank</div>
+			<div id="stats_img">Img</div>
+			<div id="stats_all"></div>
+			<div id="stats_sheep"></div>
+			<div id="stats_wolf"></div>
+		</div>	
+		
+		<div class="mp" id="mp_history">
+			LIST OF ALL YHOUR GAME HISTORY
+		</div>	
+		
+		<div class="mp" id="mp_inventory">
+			Everything you own will be shown here..<br>
+			YOUR BOOSTS<br>
+			YOUR ROLES<br>
+			YOUR CUSTOMS
+		</div>
+		
+		<div class="mp" id="mp_account">
+			Account settings<br>
+			password change<br>
+			contact us<br>	
+		</div>
+	</div>	
+</div>
+
+<div id="view_group">
+</div>
+
+<div id="confirm_buy">
+
+	<div id="cb_title">	
+		Props <span style="color: gray; font-size: 80%;">>></span> Wizard Hat
+		<div id="cb_close">
+			&#10006;
+		</div>
+	</div>
+	
+	<div id="cb_content">
+		<div class="cb_image">
+		</div>
+		<div id="cb_price_breakdown">
+			Gold: 3000<br>
+			Price: 600<br>
+		</div>
+		<div id="cb_balance">
+			Balance: 100
+		</div>
+	</div>
+	
+	<div class="buy_button" id="cb_buy">Unlock</div>
+	
+	<div class="buy_button" id="cb_success">You got it!</div>
+	
+	
+
+</div>
+
+<div id="buy_gold">
+
+	<div id="order_title">Order Details</div>
+
+	<div id="order_details">
+		
+		<div id="order_image"></div>
+		<div id="order_desc">X600</div>
+		<div id="order_total">Total: <span id="order_price">$10.00</span> USD</div>
+	
+	</div>
+	
+	<div id="card_info">
+
+		<div id="card_descriptor">
+			Brand:<br>
+			Card Number:<br>
+			Expiry Date:<br>
+			Card Holder:<br>
+			CVV:<br>
+			Zip Code:<br>
+		</div>
+		
+		<div id="card_inputs">
+			<select id="card_brand_select"><option value="Visa">Visa</option><option value="MasterCard">MasterCard</option><option value="AMEX">AMEX</option></select><br>	
+			<input type="text" id="card_num_input" /><br>
+			<select id="card_exp_month"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select> &nbsp;<select id="card_exp_year"><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option></select><br>
+			<input type="text" id="card_holder_input" /><br>
+			<input type="text" id="card_cvv_input" /><span id="cvv_info"><u>?</u></span><br>
+			<input type="text" id="zip_code" /><br>
+		</div>
+		
+	
+	</div>
+	
+	<div id="cancel_payment">Cancel</div>
+
+	<div id="pay">Pay</div>		
+
+</div>
+
+
+
+
+<div id="join_game_options">	
+
+	<div id="jsq_image">
+	</div>
+	
+	<div id="jsq_content">
+		<div id="jsq_boosts">
+			Boosts x <span id="boost_count"><%= boosts %></span>&nbsp;
+			<select id="select_boost">
+				<option selected="Choose Role" value="">Random Role</option>
+				<option value="Seer">Seer</option>
+				<option value="Protector">Protector</option>
+				<option value="Traitor">Traitor</option>
+				<option value="Recruiter">Recruiter</option>
+				<option value="Sheep">Sheep</option>
+				<option value="Wolf">Wolf</option>					
+			</select>
+		</div>
+		<div id="jsq_play">
+			Play
+		</div>			
+	</div>
+	
+</div>
+
+
+<!-- HEADER -->
+
+<div id="header">
+
+	<div id="header_content">
+
+		<div id="header_logo">
+		</div>
+		<div id="header_logo_text">
+			SHEEPWOLF.NET
+		</div>
+		
+		<div id="header_play_store">
+			<div id="play_button">PLAY</div>
+			<div id="store_button">SHOP</div>
+		</div>
+		
+		<div id="header_profile_button"><div id="header_username"><%= username %></div><div id="header_down">&#x25BC;</div></div>
+		<div id="header_lives">Lives x <%= lives%></div><div id="header_gold">Gold x <%= gold %></div>
+		<div id="header_profile_menu">
+			<div class="hpm" id="header_menu_character">Character</div>
+			<div class="hpm" id="header_menu_stats">Stats</div>
+			<div class="hpm" id="header_menu_history">History</div>					
+			<div class="hpm" id="header_menu_inventory">Inventory</div>
+			<div class="hpm" id="header_menu_account">Account</div>
+			<div class="hpm" id="header_menu_logout">Log out</div>
+		</div>
+		
+	</div>	
+	
+</div>
+
+<!-- PLAY -->
+
+<div class="wrapper" id="play_wrapper">
+
+	<div id="play_nw">
+	
+		<div id="play_join" class="content_block">
+			<b style="font-size: 120%;">Play now</b>
+			<div id="play_join_image"></div>
+			<div id="play_join_button">Play</div>
+		</div>
+		
+		<div id="play_create" class="content_block">
+			<b style="font-size: 120%;">Create a game lobby</b><br>
+			Play with friends and groups<br>
+			<div id="play_create_image"></div>
+			<div id="play_create_button">Create</div>	
+		</div>
+	
+	</div>
+	
+	<div id="play_ne" class="content_block">
+		<b style="font-size: 120%;">News / Promotions</b><br>
+		feedback survey<br>
+		news<br>
+		role / game updates<br>
+		sales<br>
+		upcoming events
+	</div>
+	
+	<div id="play_se" class="content_block">
+		<b style="font-size: 120%;">Leaders</b><br>
+		<div id="lead_top_sheep">
+			<u>Win%</u><br>
+			1. W<br>
+			2. Someone<br>
+			3. 69master69<br>
+			4. no1fagitl0rd<br>
+			5. something<br>
+			6. SomeoneElse<br>
+			7. Tyler<br>
+			8. Ted<br>
+			9. Ian<br>
+			10. SUPERLONGNAME16<br>
+		</div>
+		<div id="lead_top_wolves">
+			<u>Top Wolves</u><br>
+			1. bestWolfNA<br>
+			2. Someone<br>
+			3. SUPERLONGNAME16<br>
+			4. no1fagitl0rd<br>
+			5. something<br>
+			6. SomeoneElse<br>
+			7. Tyler<br>
+			8. Ted<br>
+			9. Ian<br>
+			10. 69master69<br>				
+		</div>
+	</div>
+	
+	<div id="play_sw" class="content_block">
+	
+		<b style="font-size: 120%;">The Game</b><span style='color: gray; font-size 90%;'> &nbsp;(3-15 minutes)</span><br><br>
+		
+			Wolves have devised a master plan to disguise themselves and tactically pick off the Sheep one by one from the inside! The Sheep, armed with only sharp reasoning skills and a numbers advantage, must identify and eliminate the Wolves before they can even the scales.<br><br>
+			
+			<div id="game_screenshot"></div>
+			
+			<b style="font-size: 120%;">Winning</b><br>
+			Wolves win if the amount of Sheep equals the amount of Wolves (2 Sheep 2 Wolves, or 1 and 1).  Sheep win if they Eliminate both wolves.<br><br>
+			
+			<b style="font-size: 120%;">Phases</b><br>
+			Every day is 3 minutes:<br><br>
+			
+			<div class="game_phase">
+				<div class="game_img_day"></div>
+				<div class="gp_content">
+					<b>Day</b> <span style='color: gray; font-size 90%;'> (1 minute)</span><br>
+					Discuss
+				</div>	
+			</div>
+			
+			<div class="game_phase">
+				<div class="game_img_day"></div>
+				<div class="gp_content">
+					<b>Suspect</b> <span style='color: gray; font-size 90%;'> (30 seconds)</span><br>
+					Pick a suspect
+				</div>	
+			</div>
+
+			<div class="game_phase">
+				<div class="game_img_day"></div>
+				<div class="gp_content">
+					<b>Trust</b> <span style='color: gray; font-size 90%;'> (30 seconds)</span><br>
+					Trust a player
+				</div>	
+			</div>
+
+			<div class="game_phase">
+				<div class="game_img_day"></div>
+				<div class="gp_content">
+					<b>Eliminate</b> <span style='color: gray; font-size 90%;'> (20 seconds)</span><br>
+					Most trusted player eliminates
+				</div>	
+			</div>
+
+			<div class="game_phase">
+				<div class="game_img_evening"></div>
+				<div class="gp_content">
+					<b>Evening</b> <span style='color: gray; font-size 90%;'> (20 seconds)</span><br>
+					Use special abilities, or catch up on sleep
+				</div>	
+			</div>
+
+			<div class="game_phase" >
+				<div class="game_img_night"></div>
+				<div class="gp_content">
+					<b>Night</b> <span style='color: gray; font-size 90%;'> (20 seconds)</span><br>
+					Wolves eat someone
+				</div>	
+			</div>				
+			
+			<br>
+
+			<b style="font-size: 120%;">Roles</b><br>
+
+			Each team will get a balanced amount of special roles<br><br>
+			
+			<div class="game_role">
+				<div class="roleIcon_Sheep"></div>
+				<div class="gr_content">
+					<b>Sheep</b> <span style='color: gray; font-size 90%;'> (Team Sheep)</span><br>
+					<span class="gr_desc">Bahh</span>
+				</div>
+			</div>
+
+			<div class="game_role">
+				<div class="roleIcon_Seer"></div>
+				<div class="gr_content">
+					<b>Seer</b> <span style='color: gray; font-size 90%;'> (Team Sheep)</span><br>
+						<span class="gr_desc">Picks a player during the evening, learns the true role of that player.</span>
+				</div>
+			</div>			
+			
+			<div class="game_role">
+				<div class="roleIcon_Protector"></div>
+				<div class="gr_content">
+					<b>Protector</b> <span style='color: gray; font-size 90%;'> (Team Sheep)</span><br>
+					<span class="gr_desc">Picks a player to protect from wolves that night, if successful, loses this ability.</span>
+				</div>
+			</div>
+
+			<div class="game_role">
+				<div class="roleIcon_Trapper"></div>
+				<div class="gr_content">
+					<b>Trapper</b> <span style='color: gray; font-size 90%;'> (Team Sheep)</span><br>
+					<span class="gr_desc">Booby traps a player in the evening.  If the player is attacked by wolves, the player and a random wolf dies.</span>
+				</div>
+			</div>
+
+			<div class="game_role">
+				<div class="roleIcon_Seer"></div>
+				<div class="gr_content">
+					<b>Coroner</b> <span style='color: gray; font-size 90%;'> (Team Sheep)</span><br>
+					<span class="gr_desc">Picks a player during the evening, learns the true role of that player.</span>
+				</div>
+			</div>
+
+			<div class="game_role">
+				<div class="roleIcon_Traitor"></div>
+				<div class="gr_content">
+					<b>Traitor</b> <span style='color: gray; font-size 90%;'> (Team Sheep)</span><br>
+					<span class="gr_desc">Wins if wolves win, knows who wolves are.  Appears as Sheep in every way.</span>
+				</div>
+			</div>
+
+			<div class="game_role">
+				<div class="roleIcon_Wolf"></div>
+				<div class="gr_content">
+					<b>Wolf</b> <span style='color: gray; font-size 90%;'> (Team Wolf)</span><br>
+					<span class="gr_desc">May alter evidence</span>
+				</div>
+			</div>
+
+			<div class="game_role">
+				<div class="roleIcon_Recruiter"></div>
+				<div class="gr_content">
+					<b>Recruiter</b> <span style='color: gray; font-size 90%;'> (Team Wolf)</span><br>
+					<span class="gr_desc">Converts a player into a Traitor instead of eating.  May only use once.</span>
+				</div>
+			</div>
+
+			<div class="game_role">
+				<div class="roleIcon_Hypnotist"></div>
+				<div class="gr_content">
+					<b>Hypnotist</b> <span style='color: gray; font-size 90%;'> (Team Wolf)</span><br>
+					<span class="gr_desc">Picks a player during the evening, controls that player during the next day.  </span>
+				</div>
+			</div>				
+			
+		
+	</div>
+
+</div>
+
+<!-- SHOP -->
+
+<div class="wrapper" id="store_wrapper">
+
+	<div id="store_lives" class="store_block">
+		<b>Lives</b>
+		<div id="sl1" class="store_item">
+			<div class="life_buy_image" id="sl1_img"></div>
+			<div class="life_buy_desc" id="sl1_desc">&nbsp;100G</div>
+			<div class="life_buy buy_button" onClick="buy('1 Life','1_Life','lives','',100);">Unlock</div>
+		</div>
+		<div id="sl3" class="store_item">
+			<div class="life_buy_image" id="sl3_img"></div>
+			<div class="life_buy_desc" id="sl3_desc">&nbsp;200G</div>
+			<div class="life_buy buy_button" onClick="buy('3 Lives','3_Lives','lives','',200);">Unlock</div>
+		</div>			
+		<div id="slInf" class="store_item">
+			<div class="life_buy_image" id="slInf_img"></div>
+			<div class="life_buy_desc" id="slInf_desc">1000G</div>
+			<div class="life_buy buy_button" onClick="buy('Inf Lives','Inf_Lives,'lives','',1200);">Unlock</div>
+		</div>
+	</div>
+	
+	<div id="store_boosts" class="store_block">
+		<b>Boosts</b>	
+		<div id="boost_content">
+		</div>
+	</div>
+	
+	<div id="store_gold" class="store_block">
+		<b>Gold (USD)</b>
+		
+		<div id="sg_600" class="store_item">
+			<div class="gold_buy_img"></div>
+			<div class="gold_buy_desc">X600</div>
+			<div class="gold_buy_price">$5.00</div>
+			<div class="gold_buy buy_button" onClick="buyGold(600);">Buy</div>
+		</div>
+		
+		<div id="sg_1400" class="store_item">
+			<div class="gold_buy_img"></div>
+			<div class="gold_buy_desc">X1400</div>
+			<div class="gold_buy_price">$10.00</div>
+			<div class="gold_buy buy_button" onClick="buyGold(1400);">Buy</div>
+		</div>
+		
+		<div id="sg_4000" class="store_item">
+			<div class="gold_buy_img"></div>
+			<div class="gold_buy_desc">X4000</div>
+			<div class="gold_buy_price">$20.00</div>
+			<div class="gold_buy buy_button" onClick="buyGold(4000);">Buy</div>
+		</div>
+		
+		<div id="payment_methods">Payment Methods here</div>
+	</div>
+	
+	<div id="store_skins" class="store_block">
+		<b> &nbsp;Props</b>
+		<div id="ss_header">250/500/1000/2500/5000</div>
+		<div id="ss_content">
+		</div>
+	</div>
+
+</div>
+
+<!-- FRIEND LIST -->
+
+<div id="friend_list">
+
+	<div id="friend_list_header">
+		<div id="friend_list_minimize">
+			-
+		</div>
+		<div id="friend_list_header_image">
+		</div>
+		<div id="friend_list_username_wrapper">
+			<div id="friend_list_username">
+			<%= username %>
+			</div>
+		</div>	
+		<div id="friend_list_status">Online</div>	
+		
+	</div>
+
+	<div id="friend_list_friends">
+
+		<div id="add_friend">
+			<input id="add_friend_input" type="text" placeholder="Add a friend..."/>
+			<div id="add_friend_button">Add</div><br>
+			<span id="add_friend_response"></span>
+		</div>
+		
+		<div id="friend_boxes">
+		</div>
+		
+	</div>
+
+	<div id="friend_list_groups">
+	
+		<div id="add_join_group">
+			<span id="show_join_group">&nbsp;<u>Join group</u></span>&nbsp; or &nbsp;<span id="show_create_group"><u>Create group</u></span>
+			
+			<div id="join_group">
+				<div id="join_group_close">X</div>
+				<input id="join_group_name" type="text" placeholder="Group name..."/>
+				<input id="join_group_password" type="text" placeholder="Password..."/>
+				<div id="join_group_button">
+					Join group
+				</div>
+				<div id="join_group_response">
+					(You may join up to 3 groups)
+				</div>
+			</div>
+			
+			<div id="create_group">
+				<div id="create_group_close">X</div>
+				<input id="create_group_name" type="text" placeholder="Group name..."/>
+				<input id="create_group_password" type="text" placeholder="Password..."/>
+				<input id="create_group_password2" type="text" placeholder="Confirm password..."/>					
+				<div id="create_group_button">
+					Create group
+				</div>	
+				<div id="create_group_response">
+					(You may only create one group)
+				</div>
+			</div>
+			
+		</div>
+		
+		<div id="group_boxes">
+		</div>			
+	
+	
+	</div>
+	
+	<div id="friend_list_alerts">
+		<div id="alert_boxes">
+		</div>
+	</div>
+		
+
+	
+</div>
+
+
+
+<div id="friend_footer">
+	<div class="footer_button" id="footer_friend_button">
+		Friends
+	</div>
+	<div class="footer_button" id="footer_groups_button">
+		Groups
+	</div>
+	<div class="footer_button" id="footer_alerts_button">
+		Alerts <span id="footer_alerts_count"></span>
+	</div>
+</div>
+
+<div id="queue_lobby_footer">
+	Queue: <span id='queue_time'>0:00</span> <div id="cancel_queue">&#10006;</div>
+</div>
+
+<div id="footer">
+	<div id="footer_content">
+		<br>
+		&nbsp;&nbsp;&nbsp;About &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Terms&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contact us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Feedback&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Copywrite 2016
+	</div>
+</div>
+		
+
+
+<!--<script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.8.0.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>-->
+<script>
+
+	var username = "<%= username %>";
+	var skins = '<%- JSON.stringify(skins) %>'; 
+	var boosts = '<%- JSON.stringify(boosts) %>';
+	
+	var mySkins = JSON.parse(skins);
+	
+	console.log("ms" + mySkins);
+	
+	var myBoosts = JSON.parse(boosts);
+	
+	console.log("mb" + myBoosts);
+	
+	var mySettings = {};
+		mySettings["Head"] = "<%= head %>";
+		mySettings["Eyes"] = "<%= eyes %>";
+		mySettings["Face"] = "<%= face %>";
+		mySettings["Body"] = "<%= body %>";
+		mySettings["Feet"] = "<%= feet %>";
+		
+	var tempSettings = {};
+		tempSettings["Head"] = "<%= head %>";
+		tempSettings["Eyes"] = "<%= eyes %>";
+		tempSettings["Face"] = "<%= face %>";
+		tempSettings["Body"] = "<%= body %>";
+		tempSettings["Feet"] = "<%= feet %>";	
+		
+	var lifeRestock = <%= lifeRestock %>;
+	var cooldown = <%= cooldown %>;
+	var lives = <%= lives %>;
+	var gold = <%= gold %>;
+	
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="../public/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../public/js/ui.js" type="text/javascript"></script>
+<script>
+	(function($){
+		$(window).load(function(){
+		
+			$("#friend_list_friends").mCustomScrollbar({theme:"light-3",scrollInertia: 0,alwaysShowScrollbar:1});
+			$("#friend_list_groups").mCustomScrollbar({theme:"light-3",scrollInertia: 0,alwaysShowScrollbar:1});
+			$("#friend_list_alerts").mCustomScrollbar({theme:"light-3",scrollInertia: 0,alwaysShowScrollbar:1});
+			
+			$("#ss_content").mCustomScrollbar({theme:"dark-3",scrollInertia: 0,alwaysShowScrollbar:1});
+			$("#boost_content").mCustomScrollbar({theme:"dark-3",scrollInertia: 0,alwaysShowScrollbar:1});
+			
+		   
+		});
+	})(jQuery);
+	
+	
+	
+</script>
+
+</body>
+
+</html>

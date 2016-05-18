@@ -1,0 +1,517 @@
+<html>
+<head>
+	<link rel="stylesheet" href="../../../public/style/game.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />	
+	<link rel="stylesheet" href="../../../public/scrollbar/jquery.mCustomScrollbar.css" />	
+</head>
+<body>
+
+
+
+
+<!--
+<div class="fog" id="leftFog"></div>
+<div class="fog" id="topFog"></div>
+<div class="fog" id="leftFog"></div>
+<div class="fog" id="botFog"></div>
+-->
+
+<div id="mask">
+</div>
+
+<div id="background_nw"></div>
+<div class="bg" id="bgDay"></div>
+<div class="bg" id="bgEvening"></div>
+<div class="bg" id="bgNight"></div>
+<div id="background_s"></div>
+
+<div id="gameWrapper">
+
+
+	<div id="gameComp">
+		<div id="gameCompSheep"></div>
+		<div id="gameCompWolves"></div>
+		<div id="evidence"><u><span id="evdHover" style="font-size: 110%;">Evidence</span></u><br></div>
+	</div>
+	
+	<div id="roleInfo">
+		<div id="roleTitle"></div>
+		<div id="roleImage"></div>
+		<div id="roleDesc"></div>
+	</div>
+	
+	<div id="evidenceInfo">
+		<div id="eiImg"></div> Evidence:
+		<div id="eiContent"></div>
+	</div>
+	
+	<div id="evidenceFound">
+		<div id="efImg"></div>
+		<div id="efContent"></div>
+		<div id="efSubmitting"></div>
+	</div>
+
+
+	<div id="chatArea">
+
+		<div id="allChatWrapper">
+			<div id="chatMessages"></div>
+			<textarea id="sendMessage" placeholder="message..."></textarea>
+			<div id="sendMessageButton">Send</div>
+				<div id="hypnoSend">&nbsp;Send as <span class="hyp_u">username</span></div>
+				<div id="hypnoVote"><span class="hyp_u">username</span>'s vote: <select id="hypSelection"></select></div>
+		</div>
+		
+		<div id="wolfChatWrapper">
+			<div id="wolfChat"></div>
+			<textarea id="wolfSend" placeholder="to wolves..."></textarea>
+			<div id="wolfSendButton">Send</div>
+			<div id="toggleChat">Wolf Chat<span id="newWolfMessages"></span></div>		
+		</div>
+		
+	</div>
+
+
+
+	<div id="gameArea">
+
+		<div id="gameAreaHeader">
+			<div id="score">
+			</div>
+		</div>
+
+		<div id="phaseGuide">
+			<span id="phaseDesc"></span><span id="phaseTimer"></span><br>
+			<span id="selection"></span>
+		</div>		
+		
+		<div id="playerWrapper">
+		
+			<div class="playerBox" id="player1Box">
+			
+				<div class="playerLight" id="player1Light">
+				</div>
+				<div class="playerLight2" id="player1Light2">
+				</div>
+				
+				<div class="player" id="player1">
+					<div class="cannon">
+					</div>	
+					<div class="playerCount" id="player1Count">
+					</div>						
+				</div>
+				
+				<div class="sleeping" id="sleeping1">
+				</div>				
+				
+				<div class="playerInfo" id="player1Info">
+					<div class="playerInfoUsername" id="player1InfoUsername">
+					</div>
+					<div class="playerInfoColor" id="player1InfoColor">
+					</div>
+					<div class="playerInfoSuspected" id="player1InfoSuspected" title="Times suspected this game">
+					</div>
+					<div class="playerInfoTrusted" id="player1InfoTrusted" title="Trust received this game">
+					</div>
+					<div class="playerInfoButton" id="player1InfoButton" title="More about this player...">
+					&#x25BC;
+					</div>				
+				</div>	
+				
+			</div>
+				
+			<div class="playerBox" id="player2Box">
+			
+				<div class="playerLight"  id="player2Light">
+				</div>
+				<div class="playerLight2"  id="player2Light2">
+				</div>
+				
+				<div class="player" id="player2">
+					<div class="cannon">
+					</div>
+
+					<div class="playerCount" id="player2Count">
+					</div>			
+				</div>
+				
+				<div class="sleeping" id="sleeping2">
+				</div>				
+				
+				<div class="playerInfo" id="player2Info">
+					<div class="playerInfoUsername" id="player2InfoUsername">
+					</div>
+					<div class="playerInfoColor" id="player2InfoColor">
+					</div>
+					<div class="playerInfoSuspected" id="player2InfoSuspected" title="Times suspected this game">
+					</div>
+					<div class="playerInfoTrusted" id="player2InfoTrusted" title="Trust received this game">
+					</div>
+					<div class="playerInfoButton" id="player2InfoButton" title="More about this player...">
+					&#x25BC;
+					</div>				
+				</div>	
+				
+			</div>
+
+				
+			<div class="playerBox" id="player3Box">
+			
+				<div class="playerLight">
+				</div>
+				<div class="playerLight2"  id="player3Light2">
+				</div>
+				
+				<div class="player" id="player3">
+					<div class="cannon">
+					</div>
+					<div class="playerCount" id="player3Count">
+					</div>				
+				</div>
+				
+				<div class="sleeping" id="sleeping3">
+				</div>				
+				
+				<div class="playerInfo" id="player3Info">
+					<div class="playerInfoUsername" id="player3InfoUsername">
+					</div>
+					<div class="playerInfoColor" id="player3InfoColor">
+					</div>
+					<div class="playerInfoSuspected" id="player3InfoSuspected" title="Times suspected this game">
+					</div>
+					<div class="playerInfoTrusted" id="player3InfoTrusted" title="Trust received this game">
+					</div>
+					<div class="playerInfoButton" id="player3InfoButton" title="More about this player...">
+					&#x25BC;
+					</div>				
+				</div>	
+				
+			</div>
+
+				
+			<div class="playerBox" id="player4Box">
+			
+				<div class="playerLight">
+				</div>
+				<div class="playerLight2"  id="player4Light2">
+				</div>
+				
+				<div class="player" id="player4">
+					<div class="cannon">
+					</div>
+					<div class="playerCount" id="player4Count">
+					</div>				
+				</div>
+				
+				<div class="sleeping" id="sleeping4">
+				</div>				
+				
+				<div class="playerInfo" id="player4Info">
+					<div class="playerInfoUsername" id="player4InfoUsername">
+					</div>
+					<div class="playerInfoColor" id="player4InfoColor">
+					</div>
+					<div class="playerInfoSuspected" id="player4InfoSuspected" title="Times suspected this game">
+					</div>
+					<div class="playerInfoTrusted" id="player4InfoTrusted" title="Trust received this game">
+					</div>
+					<div class="playerInfoButton" id="player4InfoButton" title="More about this player...">
+					&#x25BC;
+					</div>				
+				</div>	
+				
+			</div>
+
+				
+			<div class="playerBox" id="player5Box">
+			
+				<div class="playerLight">
+				</div>
+				<div class="playerLight2"  id="player5Light2">
+				</div>
+				
+				<div class="player" id="player5">
+					<div class="cannon">
+					</div>
+					<div class="playerCount" id="player5Count">
+					</div>				
+				</div>
+				
+				<div class="sleeping" id="sleeping5">
+				</div>				
+				
+				<div class="playerInfo" id="player5Info">
+					<div class="playerInfoUsername" id="player5InfoUsername">
+					</div>
+					<div class="playerInfoColor" id="player5InfoColor">
+					</div>
+					<div class="playerInfoSuspected" id="player5InfoSuspected" title="Times suspected this game">
+					</div>
+					<div class="playerInfoTrusted" id="player5InfoTrusted" title="Trust received this game">
+					</div>
+					<div class="playerInfoButton" id="player5InfoButton" title="More about this player...">
+					&#x25BC;
+					</div>				
+				</div>	
+				
+			</div>
+
+				
+			<div class="playerBox" id="player6Box">
+			
+				<div class="playerLight">
+				</div>
+				<div class="playerLight2"  id="player6Light2">
+				</div>
+				
+				<div class="player" id="player6">
+					<div class="cannon">
+					</div>
+					<div class="playerCount" id="player6Count">
+					</div>			
+				</div>
+				
+				<div class="sleeping" id="sleeping6">
+				</div>				
+				
+				<div class="playerInfo" id="player6Info">
+					<div class="playerInfoUsername" id="player6InfoUsername">
+					</div>
+					<div class="playerInfoColor" id="player6InfoColor">
+					</div>
+					<div class="playerInfoSuspected" id="player6InfoSuspected" title="Times suspected this game">
+					</div>
+					<div class="playerInfoTrusted" id="player6InfoTrusted" title="Trust received this game">
+					</div>
+					<div class="playerInfoButton" id="player6InfoButton" title="More about this player...">
+					&#x25BC;
+					</div>				
+				</div>	
+				
+			</div>
+
+				
+			<div class="playerBox" id="player7Box">
+			
+				<div class="playerLight">
+				</div>
+				<div class="playerLight2"  id="player7Light2">
+				</div>
+				
+				<div class="player" id="player7">
+					<div class="cannon">
+					</div>
+					<div class="playerCount" id="player7Count">
+					</div>			
+				</div>
+				
+				<div class="sleeping" id="sleeping7">
+				</div>				
+				
+				<div class="playerInfo" id="player7Info">
+					<div class="playerInfoUsername" id="player7InfoUsername">
+					</div>
+					<div class="playerInfoColor" id="player7InfoColor">
+					</div>
+					<div class="playerInfoSuspected" id="player7InfoSuspected" title="Times suspected this game">
+					</div>
+					<div class="playerInfoTrusted" id="player7InfoTrusted" title="Trust received this game">
+					</div>
+					<div class="playerInfoButton" id="player7InfoButton" title="More about this player...">
+					&#x25BC;
+					</div>				
+				</div>	
+				
+			</div>
+
+				
+			<div class="playerBox" id="player8Box">
+			
+				<div class="playerLight">
+				</div>
+				<div class="playerLight2"  id="player8Light2">
+				</div>
+				
+				<div class="player" id="player8">
+					<div class="cannon">
+					</div>
+					<div class="playerCount" id="player8Count">
+					</div>			
+				</div>
+				
+				<div class="sleeping" id="sleeping8">
+				</div>
+				
+				<div class="playerInfo" id="player8Info">
+					<div class="playerInfoUsername" id="player8InfoUsername">
+					</div>
+					<div class="playerInfoColor" id="player8InfoColor">
+					</div>
+					<div class="playerInfoSuspected" id="player8InfoSuspected" title="Times suspected this game">
+					</div>
+					<div class="playerInfoTrusted" id="player8InfoTrusted" title="Trust received this game">
+					</div>
+					<div class="playerInfoButton" id="player8InfoButton" title="More about this player...">
+					&#x25BC;
+					</div>				
+				</div>	
+				
+			</div>
+
+				
+			<div class="playerBox" id="player9Box">
+			
+				<div class="playerLight">
+				</div>
+				<div class="playerLight2"  id="player9Light2">
+				</div>
+				
+				<div class="player" id="player9">
+					<div class="cannon">
+					</div>
+					<div class="playerCount" id="player9Count">
+					</div>				
+				</div>
+				
+				<div class="sleeping" id="sleeping9">
+				</div>				
+				
+				<div class="playerInfo" id="player9Info">
+					<div class="playerInfoUsername" id="player9InfoUsername">
+					</div>
+					<div class="playerInfoColor" id="player9InfoColor">
+					</div>
+					<div class="playerInfoSuspected" id="player9InfoSuspected" title="Times suspected this game">
+					</div>
+					<div class="playerInfoTrusted" id="player9InfoTrusted" title="Trust received this game">
+					</div>
+					<div class="playerInfoButton" id="player9InfoButton" title="More about this player...">
+					&#x25BC;
+					</div>				
+				</div>	
+				
+			</div>
+	
+		</div> 
+
+		
+		
+		<div id="tips">
+		</div>
+	
+		<div id="gameOptions">
+			<span id="testDied"> TestDied </span><span id="testGameEnd"> TestGameEnd </span><span id="killGame">Kill Game</span><br>
+		</div>
+		
+		<div id="playerProfileBox">
+			<div id="closePlayerProfile">
+				Close
+			</div>
+			<div id="playerSelectionSummary">
+			</div>
+		</div>
+		
+		<div id="died">
+
+			<div id="diedImage">
+				<div id="diedTitle">
+					You got Eaten!
+				</div>
+			</div>	
+			
+			<div id="diedInfo">
+				- When the game is completed, you can view the results later in your Match History<br>
+				- Your team can still win!<br>
+				- You can chat with other dead players and spectators<br>
+			</div>
+			
+			<div id="toLobbyButton">
+				To Lobby
+			</div>
+			<div id="watchGameButton">
+				Watch Game
+			</div>
+		
+		</div>
+		
+		<div id="gameEnd">
+			
+			
+			<div id="gameEndImage">
+				<div id="gameEndTitle">Somebody Win!</div>
+			</div>
+			
+			<div id="gameEndStats">
+				<div id="ges_img"></div>
+				<div id="ges_header"></div>
+				<div id="ges_content"></div>
+			</div>
+			
+			<div id="gameEndRoles"></div>
+			
+			<div id="gameEndReturn">Return to Lobby</div>
+		</div>		
+
+	</div>
+
+	
+</div>	
+
+<script>
+	var game_id = <%=game_id%>;
+	var username = "<%=username%>";
+	var rand_id = <%=rand_id%>;
+	var mySeat = <%=seat%>;
+</script>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="../../../public/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+
+
+		
+	$("#chatMessages").mCustomScrollbar({
+		theme:"light-3",
+		scrollInertia: 0,
+		alwaysShowScrollbar:1,
+		advanced:{
+			updateOnContentResize: false,
+			updateOnImageLoad: false
+		}
+	});
+	
+	$("#wolfChat").mCustomScrollbar({
+		theme:"light-3",
+		scrollInertia: 0,
+		alwaysShowScrollbar:1,
+		advanced:{
+			updateOnContentResize: false,
+			updateOnImageLoad: false
+		}
+	});	   
+
+	$("#playerSelectionSummary").mCustomScrollbar({
+		theme:"light-3",
+		scrollInertia: 0,
+		alwaysShowScrollbar:1
+	});
+
+
+/*
+
+	var sheepImg = new Image();
+	sheepImg.src = "../../public/images/sheep.png";
+	
+	var wolfImg = new Image();
+	wolfImg.src = "../../public/images/wolf.png";
+	
+*/
+
+</script>
+<script src="../../../public/js/game.js" type="text/javascript"></script>
+
+
+
+</body>
+</html>
